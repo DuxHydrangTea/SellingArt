@@ -1,0 +1,70 @@
+﻿@using ArtSocial.Models;
+@{
+  
+}
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Tài khoản của tôi</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section class="section-padding" id="section_2">
+    <div class="container">
+        <div class="row justify-content-center">
+          
+            <div class="col-lg-5 col-12 pe-lg-5">
+                <div class="contact-info">
+                    <h3 class="mb-4">Họ tên người dùng:</h3>
+                    <h3 class="mb-4" style="color:#0878CE">- @Model?.FullName</h3>
+
+                    <p class="d-flex border-bottom pb-3 mb-4">
+                        <strong class="d-inline me-4">Mô tả:</strong>
+                        
+                        <span>@Html.Raw(@Model?.MoTa)</span>
+                    </p>
+                    <p class="d-flex border-bottom pb-3 mb-4">
+                        <strong class="d-inline me-4">Tên người dùng:</strong>
+
+                        <span>@Model?.UserName</span>
+                    </p>
+                    <p class="d-flex border-bottom pb-3 mb-4">
+                        <strong class="d-inline me-4">Ví:</strong>
+                        <a href="#">@Model?.Wallet vnđ</a>
+                    </p>
+
+                    <p class="d-flex">
+                        <strong class="d-inline me-4">Chức vụ:</strong>
+                        @if(Model?.isAdmin == false){
+
+                            <span>Thành viên</span>
+
+                        }
+                        else{
+
+                            <span>Admin</span>
+
+                        }    
+                    </p>
+                </div>
+            </div>
+           
+            <div class="col-lg-5 col-12 mt-5 mt-lg-0">
+                <img src="~/@Model.AvatarPath" width="100%" height="675px" />
+            </div>
+            <a asp-controller="ChangeMyInfo" asp-action="Index" asp-route-id="@Model.UserID"> Sửa </a>
+            <a href="#"> Đổi mật khẩu </a>
+
+                
+
+
+
+           @await Component.InvokeAsync("ManagerArtView")
+        </div>
+    </div>
+</section>

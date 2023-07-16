@@ -1,0 +1,56 @@
+﻿
+@model ArtSocial.Models.Product
+@*<section class="contact-section section-padding pt-0">
+<div class="row">
+    <div class="col-md-12">
+        <h3>Xác nhận xoá </h3>
+        <input asp-for="ArtID   " type="hidden" />
+        <label> Tên art: </label>
+        <input asp-for="ArtName" disabled />
+
+        <form method="post" asp-action="Delete">
+            <input asp-for="ArtID" type="hidden" />
+            <button type="submit"> OK </button>
+        </form>
+    </div>
+ </section>*@
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Xác nhận xoá tác phẩm</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section class="contact-section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <div class="section-title-wrap mb-5">
+                    <h4 class="section-title">Xác nhận xoá</h4>
+                </div>
+                <label> Tên art: </label>
+                <input asp-for="ArtName" disabled />
+
+                <form method="post" asp-action="DeleteMyProduct" asp-controller="MyAccount">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                        @*    <label asp-for="ArtID" for="floatingInput">ID tác phẩm: </label>*@
+                            <input type="text" asp-for="ArtID" name="ArtID" id="full-name" class="form-control" placeholder="Full Name" required="" hidden>
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button type="submit" class="form-control">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

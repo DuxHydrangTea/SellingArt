@@ -1,0 +1,28 @@
+﻿@model ArtSocial.Models.Product
+<div class="row column_title">
+    <div class="col-md-12">
+        <div class="page_title">
+            <h2>Duyệt sản phẩm</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header">form san pham</h5>
+            <form method="post" asp-action="Accept" class="card-body">
+                <input type="text" asp-for="ArtID" class="form-control" hidden />
+                <input type="text" asp-for="ArtName" class="form-control" />
+                <input type="text" asp-for="CategoryID" class="form-control" hidden />
+                <input type="text" asp-for="Abstract" class="form-control" hidden />
+                <input type="text" asp-for="CreatedDate" class="form-control" hidden />
+                <input type="text" asp-for="UserID" class="form-control" hidden />
+                <input type="text" asp-for="Description" class="form-control" hidden />
+                <input type="text" asp-for="Image" class="form-control" hidden />
+                <input type="text" asp-for="Prices" class="form-control" hidden />
+                <input type="text" asp-for="Accept" value="true" class="form-control"  />
+                <button type="submit" class="btn btn-primary">confirm Duyet</button>
+            </form>
+        </div>
+    </div>
+</div>

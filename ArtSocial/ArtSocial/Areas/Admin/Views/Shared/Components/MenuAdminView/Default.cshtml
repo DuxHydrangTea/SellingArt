@@ -1,0 +1,55 @@
+﻿@model IList<Menu>
+@using ArtSocial.Utilities;
+
+<nav id="sidebar">
+    <div class="sidebar_blog_1">
+        <div class="sidebar-header">
+            <div class="logo_section">
+                <a href="index.html"><img class="logo_icon img-responsive" src="~/admin/images/logo/logo_icon.png" alt="#" /></a>
+            </div>
+        </div>
+        <div class="sidebar_user_info">
+            <div class="icon_setting"></div>
+            <div class="user_profle_side">
+                <div class="user_img"><img class="img-responsive" src="~/admin/images/layout_img/user_img.jpg" alt="#" /></div>
+                <div class="user_info">
+                    <h6>@Functions._AdminUser</h6>
+                    <p><span class="online_animation"></span> Online</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar_blog_2">
+        <h4>General</h4>
+        <ul class="list-unstyled components">
+
+
+
+            @foreach (var item in Model.Where(m => m.ParentID == 0).ToList())
+            {
+                var idcha = item.MenuID;
+                var MenuHasChild = Model.Where(p => p.ParentID == idcha).ToList();
+
+                @if (MenuHasChild.Count() == 0)
+                {
+                    <li><a href="@item.Link"><i class="fa fa-clock-o orange_color"></i> <span>@item.MenuName</span></a></li>
+                }
+                else{
+                    string element = "element" + item.MenuID.ToString();
+                     <li>
+                        <a href="#@element" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-diamond purple_color"></i> <span>@item.MenuName</span></a>
+                        <ul class="collapse list-unstyled" id="@element">
+                            @foreach (var child in MenuHasChild)
+                            {
+                                <li><a href="@child.Link">> <span>@child.MenuName</span></a></li>
+                            }
+                        </ul>
+                    </li>
+
+                }
+            }
+
+        
+        </ul>
+    </div>
+</nav>

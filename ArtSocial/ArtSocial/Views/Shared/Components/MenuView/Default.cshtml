@@ -1,0 +1,91 @@
+﻿@model IList<Menu>
+@using ArtSocial.Utilities;
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand me-lg-5 me-0" href="/Admin">
+            <img src="~/web/images/pod-talk-logo.png" class="logo-image img-fluid" alt="templatemo pod talk" />
+        </a>
+        
+        <form action="@Url.Action("Search", "Product")" method="get" class="custom-form search-form flex-fill me-3" role="search">
+            <div class="input-group input-group-lg">
+                <input type="text" name="str" placeholder="Search..." class="form-control">
+                <button type="submit" class="form-control" id="submit"> <i class="bi-search"></i></button> 
+            </div>
+        </form>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+
+
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-lg-auto">
+               
+                    @foreach (var item in Model.Where(m => m.Position ==1 && m.ParentID == 0 ).ToList())
+                    {
+                        var idcha = item.MenuID;
+                        var MenuHasChild = Model.Where(p => p.ParentID == idcha).ToList();
+
+
+                        @if(MenuHasChild.Count() ==0){
+                        <li class="nav-item">
+                            <a class="nav-link" href="@item.Link">@item.MenuName</a>
+                        </li>
+                        }
+                        else{
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">@item.MenuName</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+
+                                @foreach (var child in MenuHasChild)
+                                {
+                                    <li><a class="dropdown-item" href="@item.Link">@child.MenuName</a></li>
+                                }       
+
+                            </ul>
+                        </li>
+
+                    }
+
+                    }
+            </ul>
+
+            <div class="ms-4">
+                <a href="/Register/Index" class="btn custom-btn custom-border-btn smoothscroll">Admin</a>
+            </div>
+            @if( Functions._UserID == 0 ){
+
+                 <div class="ms-4">
+                    <a href="/Register/Index" class="btn custom-btn custom-border-btn smoothscroll">Dang nhap</a>
+                </div>
+
+            }
+            else{
+
+                <div class="ms-4">
+                    <a href="/MyAccount/Index" class="btn custom-btn custom-border-btn smoothscroll">@Functions._UserName</a>
+                </div>
+
+            }
+        </div>
+
+
+
+
+        
+    </div>
+</nav>
+

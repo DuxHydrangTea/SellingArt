@@ -1,0 +1,53 @@
+﻿@model ArtSocial.Models.Menu
+<div class="row column_title">
+    <div class="col-md-12">
+        <div class="page_title">
+            <h2>Sửa Menu</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header">Form menu</h5>
+            <form method="post" asp-action="Edit" class="card-body">
+                <input type="text" asp-for="MenuID"  class="form-control" hidden />
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">MenuName</label>
+                    <input type="text" asp-for="MenuName" name="MenuName" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">MenuOrder</label>
+                    <input type="text" asp-for="MenuOrder" name="MenuOrder" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlSelect1" class="form-label">Menu con của: </label>
+                    <select asp-for="ParentID" name="ParentID" asp-items="@(new SelectList(ViewBag.listcha,"Value","Text"))" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="exampleDataList" class="form-label">Vị trí</label>
+                    <input asp-for="Position" name="Position" class="form-control"
+                           list="datalistOptions"
+                           id="exampleDataList"
+                           placeholder="Type to search..." />
+                                <datalist id="datalistOptions">
+                                    <option value="1">Header</option>
+                                    <option value="2">Footer</option>
+
+                                </datalist>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Link</label>
+                    <input type="text" asp-for="Link" name="Link" class="form-control" />
+                </div>
+                <input type="text" asp-for="ofAdmin" name="ofAdmin" value="false" hidden class="form-control" />
+
+
+                <button type="submit" class="btn btn-primary">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

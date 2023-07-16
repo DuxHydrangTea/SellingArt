@@ -1,0 +1,63 @@
+﻿@model IList<Category>
+
+
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Tables</h2>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+
+            <!-- table section -->
+            <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Quản lý thể loại</h2>
+                        </div>
+                    </div>
+                    <div class="table_section padding_infor_info">
+                        <div class="table-responsive-sm">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên thể loại</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.CategoryID</td>
+                                            <td>@item.CategoryName</td>
+                                           
+                                            <td> <a asp-area="Admin" asp-action="Edit" asp-controller="CategoryAdmin" asp-route-id="@item.CategoryID"> Sửa / </a> <a asp-area="Admin" asp-action="Delete" asp-controller="CategoryAdmin" asp-route-id="@item.CategoryID">Xoá</a> </td>
+
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="container-fluid">
+        <div class="footer">
+            <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
+        </div>
+    </div>
+</div>

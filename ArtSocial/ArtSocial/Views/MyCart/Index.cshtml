@@ -1,0 +1,171 @@
+﻿@model IList<DetailMyCart>
+@{
+    int? TongTien = 0;
+    foreach (var item in Model)
+    {
+            TongTien += item.Prices;
+    }
+}
+<style>
+    .profile-detail-block2{
+        border: 1px solid #dee2e6;
+    border-radius: var(--border-radius-large);
+    padding: 25px 150px;
+    }
+    .profile-block-image2{
+        border-radius: var(--border-radius-large);
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    }
+    .profile-block2{
+        margin-right: 100px;
+        margin-left: 100px;
+    }
+    </style>
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Giỏ hàng của bạn</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+
+<section class="latest-podcast-section section-padding pb-0" id="section_2">
+    <div class="container">
+        <div class="row justify-content-center">
+        </div>
+    </div>
+</section>
+
+
+
+@foreach (var item in Model)
+{
+    string url = "/tac-pham-" + item.ArtID.ToString();
+    <div class="profile-block2 profile-detail-block2 d-flex flex-wrap align-items-center mt-5">
+
+        <img src="@item.Image" class="profile-block-image2 img-fluid" alt="" />
+        <div class="d-flex mb-3 mb-lg-0 mb-md-0">
+            <p>
+                <div id="comments">
+                    <div class="comment">
+
+                        <h3>@item.ArtName</h3>
+                        <small>June 1st, 2023</small>
+                        <p>@item.Abstract</p>
+                    </div>
+                </div>
+
+            </p>
+        </div>
+
+        <ul class="social-icon ms-lg-auto ms-md-auto">
+
+            <div id="comments">
+                <div class="comment">
+
+
+                    <p>Giá tiền: @item.Prices đ</p>
+                </div>
+            </div>
+
+            <a href="@url" class="badge ms-auto">
+                <i class="bi-info"></i>
+            </a>
+            <a asp-controller="MyCart" asp-action="DeleteonCart" asp-route-id="@item.CartID" class="badge ms-auto">
+                <i class="bi-trash"></i>
+            </a>
+            @*<a href="#" class="badge ms-auto">
+                <i class="bi-trash"></i>
+            </a>*@
+        </ul>
+
+
+
+
+    </div>
+
+}
+
+<div class="profile-block2 d-flex flex-wrap align-items-center mt-5">
+
+
+    <ul class="social-icon ms-lg-auto ms-md-auto">
+
+        <li class="social-icon-item">
+            <h5> Tổng tiền: @TongTien đ</h5>
+        </li>
+
+
+    </ul>
+</div>
+
+
+           
+<section class="related-podcast-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+                <div class="section-title-wrap mb-5">
+                    <h4 class="section-title">Chọn phương thức thanh toán</h4>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                <div class="custom-block custom-block-full">
+                    <div class="custom-block-image-wrap">
+                        <a href="detail-page.html">
+                        </a>
+                    </div>
+
+                    <div class="custom-block-info">
+                        <h5 class="mb-2">
+                            <a href="detail-page.html">
+                                Thanh toán qua thẻ
+                            </a>
+                        </h5>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                <div class="custom-block custom-block-full">
+                    <div class="custom-block-image-wrap">
+                        <a href="detail-page.html">
+                        </a>
+                    </div>
+
+                    <div class="custom-block-info">
+                        <h5 class="mb-2">
+                            <a href="detail-page.html">
+                                Thanh toán COD
+                            </a>
+                        </h5>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</section>

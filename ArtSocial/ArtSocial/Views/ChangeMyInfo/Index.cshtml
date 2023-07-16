@@ -1,0 +1,55 @@
+﻿@using ArtSocial.Models;
+@model ArtSocial.Models.User;
+@using ArtSocial.Utilities;
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Thông tin cá nhân</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section class="contact-section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <div class="section-title-wrap mb-5">
+                    <h4 class="section-title">Thay đổi thông tin cá nhân</h4>
+                </div>
+                <form asp-action="index" asp-controller="ChangeMyInfo" method="post" class="custom-form contact-form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="text" asp-for="UserID" name="UserID" id="full-name" class="form-control" placeholder="Full Name" required="" hidden >
+                            <input type="text" asp-for="UserName" name="UserName" id="full-name" class="form-control" placeholder="Full Name" required="">
+                            <input type="text" asp-for="Password" name="Password" id="full-name" class="form-control" placeholder="Full Name" required="" hidden />
+                            <input type="text" asp-for="Avatar" name="Avatar" id="full-name" class="form-control" required="" value="NULL" hidden />
+                            <input type="text" asp-for="AvatarPath" name="AvatarPath" id="full-name" class="form-control" placeholder="Full Name" required="" />
+                            <input type="text" asp-for="Wallet" name="Wallet" id="full-name" class="form-control" placeholder="Full Name" required=""  />
+                        </div>
+
+
+                        <div class="col-lg-12 col-12">
+                            <label for="floatingTextarea" asp-for="MoTa">Mô tả</label>
+                            <div class="form-floating">
+                                <textarea asp-for="MoTa" class="form-control" id="message" name="MoTa" placeholder="Describe message here"></textarea>
+                                <input type="text" asp-for="isAdmin" name="isAdmin" id="full-name" class="form-control" value="false" required="" hidden  />
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button type="submit" class="form-control">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

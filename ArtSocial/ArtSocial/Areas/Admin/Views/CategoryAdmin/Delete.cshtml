@@ -1,0 +1,23 @@
+﻿
+
+@model ArtSocial.Models.Category
+<div class="row column_title">
+    <div class="col-md-12">
+        <div class="page_title">
+            <h2>Xoá thể loại</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Xác nhận xoá </h3>
+        <input asp-for="CategoryID" type="hidden" />
+        <label> Tên thể loại: </label>
+        <input asp-for="CategoryName" disabled />
+
+        <form method="post" asp-action="Delete">
+            <input asp-for="CategoryID" type="hidden" />
+            <button type="submit"> OK </button>
+        </form>
+    </div>
+</div>

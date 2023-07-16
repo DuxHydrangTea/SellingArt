@@ -1,0 +1,33 @@
+﻿@model IList<Comment>
+
+@if (Model.Count == 0)
+{
+    <strong>Không có bình luận</strong>
+}
+else
+{
+    
+        @foreach (var item in Model)
+        {
+            <div class="d-flex mb-3 mb-lg-0 mb-md-0">
+                <!-- <img src="images/profile/woman-posing-black-dress-medium-shot.jpg" class="profile-block-image img-fluid" alt=""> -->
+                <img src="~/@item.AvatarPath" class="profile-block-image img-fluid" alt="" />
+                <p>
+                    <!-- Elsa -->
+                    <!-- <img src="images/verified.png" class="verified-image img-fluid" alt=""> -->
+                    <!-- <strong>Influencer</strong> -->
+                    <div id="comments">
+                        <div class="comment">
+
+                            <h5>@item.FullName  </h5>
+                            <small>@item.CreatedDate.ToString()</small>
+                            <p>@item.CommentText</p>
+                        </div>
+                        <hr>
+                    </div>
+
+                </p>
+            </div>
+        }
+   
+}

@@ -1,0 +1,24 @@
+﻿@model ArtSocial.Models.Product
+<div class="row column_title">
+    <div class="col-md-12">
+        <div class="page_title">
+            <h2>Xoá sản phẩm</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Xác nhận xoá </h3>
+        <input asp-for="ArtID" type="hidden" />
+        <label> Tên menu: </label>
+        <input asp-for="ArtName" disabled />
+
+        <form method="post" asp-action="Delete">
+            <input asp-for="ArtID" type="hidden" />
+            <button type="submit"> OK </button>
+        </form>
+
+
+
+    </div>
+</div>

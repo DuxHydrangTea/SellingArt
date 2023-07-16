@@ -1,0 +1,126 @@
+﻿@using ArtSocial.Models;
+@using Microsoft.AspNetCore.Html;
+@using Microsoft.AspNetCore;
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Tác phẩm</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+<section class="latest-podcast-section section-padding pb-0" id="section_2">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-10 col-12">
+                <div class="section-title-wrap mb-5">
+                    <h4 class="section-title">Thông tin tác phẩm</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-12">
+                        <div class="custom-block-icon-wrap">
+                            <div class="custom-block-image-wrap custom-block-image-detail-page">
+                                <img src="@Model.Image" class="custom-block-image img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-12">
+                        <div class="custom-block-info">
+                            <div class="custom-block-top d-flex mb-1">
+                                <small class="me-4">
+                                    <a href="#">
+                                        <i class="bi-play"></i>
+                                        Play now
+                                    </a>
+                                </small>
+
+                                <small>
+                                    <i class="bi-clock-fill custom-icon"></i>
+                                    50 Minutes
+                                </small>
+
+                                <small class="ms-auto">Episode <span class="badge">15</span></small>
+                            </div>
+
+                            <h2 class="mb-2">Tác phẩm: @Model?.ArtName</h2>
+                            <p>T&aacute;c giả:&nbsp;<a href="https://www.dohoa360.com/tieu-chi-danh-gia-mot-thiet-ke-tot/#" title="Đồ họa 360">@Model.FullName</a></p>
+                            <p>
+                                @(new HtmlString(Model?.Description))
+                            </p>
+                            Giá tiền: @Model?.Prices
+                            <h4>Bình luận</h4>
+                            <div class="profile-block profile-detail-block d-flex flex-wrap align-items-center mt-5">
+                                
+                                
+                               
+                                        <img src="images/verified.png" class="verified-image img-fluid" alt="">
+                                <div class="d-flex mb-3 mb-lg-0 mb-md-0">
+
+
+
+
+                                @*    <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                                        <div class="input-group input-group-lg">
+                                            <input name="search" type="search" class="form-control" id="search" placeholder="Bình luận tại đây !" aria-label="Search">
+
+                                            <button type="submit" class="form-control" id="submit">
+                                                Gửi
+                                            </button>
+                                        </div>
+                                    </form>*@
+
+
+
+                                    <form action="@Url.Action("Comment_Acction", "Product")" method="get" class="custom-form search-form flex-fill me-3" role="search" >
+                                        <div class="input-group input-group-lg">
+                                            <input type="text" name="ArtID" value="@Model?.ArtID" hidden  />
+                                            <input type="text" name="commentstext" placeholder="Bình luận" class="form-control">
+                                            <button type="submit" class="form-control" id="submit"> > </button> 
+                                        </div>
+                                    </form>
+
+
+
+
+
+                                </div>
+                                <ul>
+                                        @await Component.InvokeAsync("Comments", new {ArtID = Model?.ArtID})
+                                        </ul>
+                                
+                               
+                            </div>
+                            
+
+
+              
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@await Component.InvokeAsync("RecentArtView")
+
+@*
+@page
+@model IndexModel
+@addTagHelper *, WebApplication
+<div class="p-3 m-3 bg-success">@await Component.InvokeAsync("ParamSample", new { greeting = "Xin chào", name = "Ngài tổng thống" })</div>
+<div class="p-3 m-3 bg-secondary"><vc:param-sample greeting="Xin chào" name="Ngài tổng thống" /></div>
+*@

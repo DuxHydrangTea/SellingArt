@@ -1,0 +1,79 @@
+﻿@model IList<Menu>
+
+
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Tables</h2>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+
+            <!-- table section -->
+            <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Quản lý Menu</h2>
+                        </div>
+                    </div>
+                    <div class="table_section padding_infor_info">
+                        <div class="table-responsive-sm">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên danh mục</th>
+                                        <th>Xếp thứ tự</th>
+                                        <th>Menu con của</th>
+                                        <th>Vị trí</th>
+                                        <th>Link</th>
+                                        <th>*</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.MenuID</td>
+                                            <td>@item.MenuName</td>
+                                            <td>@item.MenuOrder</td>
+                                            <td>@item.ParentID</td>
+                                            @if (item.Position == 1)
+                                            {
+                                                 <td>Header</td>
+                                            }
+                                            else if(item.Position == 2){
+                                                <td>Footer</td>
+                                            }
+                                            else{
+                                                <td>Default</td>
+                                            }
+                                            <td>@item.Link</td>
+                                            <td> <a asp-area="Admin" asp-action="Edit" asp-controller="Menu" asp-route-id="@item.MenuID"> Sửa / </a> <a asp-area="Admin" asp-action="Delete" asp-controller="Menu" asp-route-id="@item.MenuID" >Xoá</a> </td>
+
+                                        </tr>
+                                    }
+                                   
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="container-fluid">
+        <div class="footer">
+            <p>Copyright © 2018 Designed by html.design. All rights reserved.</p>
+        </div>
+    </div>
+</div>

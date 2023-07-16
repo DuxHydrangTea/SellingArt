@@ -1,0 +1,82 @@
+﻿@using ArtSocial.Models;
+@model ArtSocial.Models.Product;
+@using ArtSocial.Utilities;
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+
+                <h2 class="mb-0">Sửa tác phẩm</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+<section class="contact-section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <div class="section-title-wrap mb-5">
+                    <h4 class="section-title">Làm phong phú cho khối tác phẩm của bạn</h4>
+                </div>
+                <form asp-action="EditMyArt" asp-controller="MyAccount" method="post" class="custom-form contact-form">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="text" asp-for="ArtID" name="ArtID" id="full-name" class="form-control" placeholder="Full Name" required="" hidden>
+                            <input type="text" asp-for="CreatedDate" name="CreatedDate" id="full-name" class="form-control" placeholder="Full Name" required="" hidden>
+                           <input type="text" asp-for="UserID" name="UserID" id="full-name" class="form-control" placeholder="Full Name" required="" hidden />
+                            <label asp-for="ArtName" for="floatingInput">Tên tác phẩm: </label>
+                            <div class="form-floating">
+                                <input type="text" asp-for="ArtName" name="ArtName" id="full-name" class="form-control" placeholder="Full Name" required="">
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <label for="floatingInput" asp-for="CategoryID">Chọn thể loại</label>
+                            <div class="form-floating">
+                                <select name="CategoryID" id="" asp-for="CategoryID" class="form-control" asp-items="@(new SelectList(ViewBag.listCate,"Value","Text"))">
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12 col-12">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <label asp-for="Prices" for="floatingInput">GIá tiền </label>
+                                <div class="form-floating">
+                                    <input type="number" asp-for="Prices" name="Prices" id="full-name" class="form-control" placeholder="Full Name" required="">
+
+
+                                </div>
+                            </div>
+
+
+                            <label asp-for="Image" for="floatingInput">Hình ảnh</label>
+                            <div class="form-floating">
+                                <input asp-for="Image" type="text" name="Image" id="name" class="form-control" placeholder="Name" required="">
+
+
+                            </div>
+                            <label for="floatingTextarea" asp-for="Description">Mô tả</label>
+                            <div class="form-floating">
+                                <textarea asp-for="Description" class="form-control" id="message" name="Description" placeholder="Describe message here"></textarea>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12 ms-auto">
+                            <button type="submit" class="form-control">Submit</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+﻿@model ArtSocial.Models.Category
+<div class="row column_title">
+    <div class="col-md-12">
+        <div class="page_title">
+            <h2>Thêm thể loại</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header">Form menu</h5>
+            <form method="post" asp-action="Create" class="card-body">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Tên thể loại</label>
+                    <input type="text" asp-for="CategoryName" name="CategoryName" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+            </form>
+        </div>
+    </div>
+</div>
